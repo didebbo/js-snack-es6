@@ -4,6 +4,6 @@
 
 const array = [1,2,3,4,5,6,7,8,9,10];
 
-const func = (a,b,array) => array.filter((el) => el >= a && el <= b);
+const func = (a,b,array) => array.filter((el) => el > a && el < b);
 
 console.log(func(2,8,array));
