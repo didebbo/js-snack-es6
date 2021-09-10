@@ -3,6 +3,7 @@
 // Stampare a schermo la bici con peso minore utilizzando destructuring e template literal
 
 const bikesStore = [];
+let liteBikes = [];
 
 for (let i = 0; i < 10; i++) {
     const bike = {
@@ -15,11 +16,22 @@ for (let i = 0; i < 10; i++) {
 let liteBike = bikesStore[0];
 
 bikesStore.forEach((bike) => {
-    if (bike["peso"] < liteBike["peso"]) liteBike = bike;
+    // if (bike["peso"] < liteBike["peso"]) liteBike = bike;
+    if(liteBikes.length <= 0) liteBikes.push(bike);
+    else if(bike["peso"] == liteBikes[0]["peso"]) liteBikes.push(bike);
+    else if (bike["peso"] < liteBikes[0]["peso"]) {
+        liteBikes = [];
+        liteBikes.push(bike);
+    } 
 });
 
-const { nome } = liteBike;
+let dLog = "Le bici più leggere dello store sono:";
+liteBikes.forEach((bike) => {
+    const {nome} = bike;
+    dLog += ` ${nome},`;
+});
 
 console.log(bikesStore);
-console.log(`La ${nome} è la bici più leggera dello store`);
+console.log(liteBikes);
+console.log(dLog.slice(0,-1));
 
